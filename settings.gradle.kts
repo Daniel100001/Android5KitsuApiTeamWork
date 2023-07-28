@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Android5KitsuApiTeamWork"
-include ':app'
+include (":app")
