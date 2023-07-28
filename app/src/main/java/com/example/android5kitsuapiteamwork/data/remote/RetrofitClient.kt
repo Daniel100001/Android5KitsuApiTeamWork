@@ -1,6 +1,7 @@
 package com.example.android5kitsuapiteamwork.data.remote
 
 import com.example.android5kitsuapiteamwork.data.remote.apiservices.AnimeApiService
+import com.example.android5kitsuapiteamwork.data.remote.apiservices.MangaApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,6 +27,10 @@ class RetrofitClient {
 
     fun provideAnimeApiService(): AnimeApiService {
         return retrofitClient.create(AnimeApiService::class.java)
+    }
+
+    fun provideMangaApiService(): MangaApiService {
+        return retrofitClient.create(MangaApiService::class.java)
     }
 
     fun provideLoggingInterceptor() =
