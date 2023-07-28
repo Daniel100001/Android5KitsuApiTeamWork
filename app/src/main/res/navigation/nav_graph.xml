@@ -7,7 +7,8 @@
 
     <fragment
         android:id="@+id/animeFragment"
-        android:name="com.example.android5kitsuapiteamwork.ui.fragments.home.anime.AnimeFragment"
+        android:name="com.example.android5kitsuapiteamwork.ui.fragments.anime.AnimeFragment"
         android:label="fragment_anime"
         tools:layout="@layout/fragment_anime" />
+
 </navigation>

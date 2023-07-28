@@ -30,12 +30,10 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding, AnimeViewModel>(R.layou
     }
 
     private fun subscribeToAnime() {
-        lifecycleScope.launch {
-            viewModel.fetchAnime().observe(viewLifecycleOwner) {
-                lifecycleScope.launch {
-                    animeAdapter.submitData(it)
-                    Log.e("activity", it.toString())
-                }
+        viewModel.fetchAnime().observe(viewLifecycleOwner) {
+            lifecycleScope.launch {
+                Log.e("activity", it.toString())
+                animeAdapter.submitData(it)
             }
         }
     }
