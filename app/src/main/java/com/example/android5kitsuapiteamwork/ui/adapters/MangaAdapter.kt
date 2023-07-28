@@ -9,11 +9,20 @@ import com.bumptech.glide.Glide
 import com.example.android5kitsuapiteamwork.data.models.MangaModel
 import com.example.android5kitsuapiteamwork.databinding.ItemKitsuBinding
 
-class MangaAdapter :
+class MangaAdapter(private val onItemClick: (id: String) -> Unit) :
     PagingDataAdapter<MangaModel, MangaAdapter.MangaViewHolder>(DiffUntilCallback()) {
 
     inner class MangaViewHolder(private val binding: ItemKitsuBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                getItem(absoluteAdapterPosition)?.let {
+                    onItemClick(it.id)
+                }
+            }
+        }
+
         fun onBind(item: MangaModel?) {
             binding.itemCharacterName.text = item?.attributes?.title?.nameInJapanese
             Glide.with(binding.itemCharacterImage).load(item?.attributes?.posterImage?.original)

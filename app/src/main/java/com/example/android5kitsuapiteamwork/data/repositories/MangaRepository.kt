@@ -18,4 +18,8 @@ class MangaRepository @Inject constructor(private val service: MangaApiService) 
     ) {
         MangaPagerSource(service)
     }.liveData
+
+    fun fetchSingleManga(id: String) = doRequest {
+        service.fetchSingleManga(id)
+    }
 }
