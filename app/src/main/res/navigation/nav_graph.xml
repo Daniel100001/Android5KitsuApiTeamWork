@@ -3,11 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/animeFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/animeFragment"
-        android:name="com.example.android5kitsuapiteamwork.ui.fragments.home.anime.AnimeFragment"
+        android:name="com.example.android5kitsuapiteamwork.ui.fragments.anime.AnimeFragment"
         android:label="fragment_anime"
         tools:layout="@layout/fragment_anime" />
+    <fragment
+        android:id="@+id/mangaFragment"
+        android:name="com.example.android5kitsuapiteamwork.ui.fragments.manga.MangaFragment"
+        android:label="fragment_manga"
+        tools:layout="@layout/fragment_manga" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.android5kitsuapiteamwork.ui.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_mangaDetailFragment2"
+            app:destination="@id/mangaDetailFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_animeDetailFragment2"
+            app:destination="@id/animeDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/animeDetailFragment2"
+        android:name="com.example.android5kitsuapiteamwork.ui.fragments.detail.anime.AnimeDetailFragment"
+        android:label="fragment_anime_detail"
+        tools:layout="@layout/fragment_anime_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mangaDetailFragment2"
+        android:name="com.example.android5kitsuapiteamwork.ui.fragments.detail.manga.MangaDetailFragment"
+        android:label="fragment_manga_detail"
+        tools:layout="@layout/fragment_manga_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
 </navigation>
