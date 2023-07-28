@@ -3,12 +3,14 @@ package com.example.android5kitsuapiteamwork.ui.fragments.manga
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.android5kitsuapiteamwork.R
 import com.example.android5kitsuapiteamwork.base.BaseFragment
 import com.example.android5kitsuapiteamwork.databinding.FragmentMangaBinding
 import com.example.android5kitsuapiteamwork.ui.adapters.MangaAdapter
+import com.example.android5kitsuapiteamwork.ui.fragments.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -16,8 +18,15 @@ import kotlinx.coroutines.launch
 class MangaFragment : BaseFragment<FragmentMangaBinding, MangaViewModel>(R.layout.fragment_manga) {
     override val binding by viewBinding(FragmentMangaBinding::bind)
     override val viewModel: MangaViewModel by viewModels()
-    private val mangaAdapter = MangaAdapter()
+    private val mangaAdapter = MangaAdapter(this::onItemClick)
 
+    private fun onItemClick(id: String) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToMangaDetailFragment2(
+                id
+            )
+        )
+    }
     override fun initialize() {
         binding.recyclerViewManga.apply {
             layoutManager = GridLayoutManager(requireContext(), 3)
@@ -37,5 +46,4 @@ class MangaFragment : BaseFragment<FragmentMangaBinding, MangaViewModel>(R.layou
             }
         }
     }
-
 }
